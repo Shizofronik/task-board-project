@@ -1,0 +1,26 @@
+@import './styles.css';
+
+.tabs {
+    display: flex;
+    background-color: var(--bgColor-default);
+    width: 100vw;
+}
+
+.tab {
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: 2px solid var(--bgColor-default);
+    background: none;
+    font-size: 1rem;
+    color: var(--bodyColor-default)
+}
+
+.tab:hover {
+    background-color: var(--borderColor-default);
+}
+
+.tab.active {
+    border-bottom: 2px solid var(--greenAccent);
+    font-weight: 500;
+}
