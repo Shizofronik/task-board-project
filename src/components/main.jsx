@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import HeadBar from './headBar'
-import InboxList, { ComplitedList } from './taskLists';
+import InboxList from './taskLists';
 import CreateTask from './createTask';
 import InizializateTasks, {AddTask} from '../scripts/taskManager';
+import SideBar from './sideBar';
 
 let taskList 
 InizializateTasks().then((data) => taskList = data)
@@ -33,8 +34,10 @@ function Main({ TakeUsername }) {
         <div className='main-container'>
             <HeadBar TakeUsername={userName} />
             <div className="task-main">
-                <InboxList taskInfo={taskInboxInfo} updateList={updateLists}/>
-                <ComplitedList taskInfo={taskCompletedInfo} updateList={updateLists}/>
+                <SideBar/>
+                <InboxList taskInfo={taskInboxInfo} 
+                    taskCompletedInfo={taskCompletedInfo} 
+                    updateList={updateLists}/>
                 <CreateTask TakeProperties={addTask} />
             </div>
         </div>

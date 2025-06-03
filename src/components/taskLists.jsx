@@ -11,13 +11,14 @@ function SortedTask(taskInfo, updateList) {
 }
 
 
-function InboxList({taskInfo, updateList, ...props}) {
+function InboxList({taskInfo, updateList, taskCompletedInfo, ...props}) {
     
     return (
         <div className="task-list" id='inbox-list'>
             <h3>Входящие</h3>
             <ul id="inbox-tasks" style={{padding: 0}}>
                 {SortedTask(taskInfo, updateList)}
+                <ComplitedList taskInfo={taskCompletedInfo} updateList={taskInfo}/>
             </ul>
         </div>
     )

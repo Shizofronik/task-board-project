@@ -26,13 +26,13 @@ function CreateTask({ TakeProperties }) {
                 data-input="title" 
                 type="text" 
                 placeholder="Title"
-                onBlur={event => setTitleValue(event.target.value)}>
+                onChange={event => setTitleValue(event.target.value)}>
             </input>
             <input 
                 data-input="description" 
                 type="text" 
                 placeholder="Description"
-                onBlur={event => setDescriptionValue(event.target.value)}>
+                onChange={event => setDescriptionValue(event.target.value)}>
             </input>
             <button data-button="create-task">Создать задачу</button>
         </form>
