@@ -8,7 +8,7 @@ InizializateTasks().then((data) => maxId = parseInt(data[data.length - 1].id) + 
 
 function CreateTask({ TakeProperties }) {
     const [titleValue, setTitleValue] = useState('')
-    const [descriptionValue, setDescriptionValue] = useState('')
+    const [descriptionValue] = useState('')
     const [id, setId] = useState(maxId)
     const [isCompleted] = useState("false")
 
@@ -19,23 +19,18 @@ function CreateTask({ TakeProperties }) {
     }
 
     return (
-        <form 
-            style={{height: '200px', background: 'var(--bgColor-light)', border: 'none'}}
-            onSubmit={event => getProperties(event)}>
-            <input 
-                data-input="title" 
-                type="text" 
-                placeholder="Title"
-                onChange={event => setTitleValue(event.target.value)}>
+        <form class="create-form"onSubmit={event => getProperties(event)}>
+            <button style={{height: 30, borderRadius: '50%', marginRight: 10, marginTop: '5px'}}
+                    type="submit">
+                        +
+            </button>
+            <input style={{width: '85%', marginTop: '5px'}} 
+                    placeholder="Создать задачу" 
+                    id="create-task"
+                    onChange={event => setTitleValue(event.target.value)}>
             </input>
-            <input 
-                data-input="description" 
-                type="text" 
-                placeholder="Description"
-                onChange={event => setDescriptionValue(event.target.value)}>
-            </input>
-            <button data-button="create-task">Создать задачу</button>
         </form>
+
     )
 }
 

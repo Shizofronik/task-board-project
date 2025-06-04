@@ -1,5 +1,6 @@
 import React from 'react';
 import Task from './task'
+import CreateTask from './createTask';
 
 function SortedTask(taskInfo, updateList) {
 
@@ -11,11 +12,11 @@ function SortedTask(taskInfo, updateList) {
 }
 
 
-function InboxList({taskInfo, updateList, taskCompletedInfo, ...props}) {
+function InboxList({taskInfo, updateList, taskCompletedInfo, TakeProperties, ...props}) {
     
     return (
         <div className="task-list" id='inbox-list'>
-            <h3>Входящие</h3>
+            <CreateTask TakeProperties={TakeProperties}/>
             <ul id="inbox-tasks" style={{padding: 0}}>
                 {SortedTask(taskInfo, updateList)}
                 <ComplitedList taskInfo={taskCompletedInfo} updateList={taskInfo}/>
@@ -28,7 +29,7 @@ function ComplitedList({taskInfo, updateList, ...props}) {
 
     return (
         <div className="task-list" id='completed-list'>
-            <h3>Завершенные</h3>
+            <h5 style={{float: 'left', marginLeft: 10}}>Выполнено</h5>
             <ul id="completed-tasks" style={{padding: 0}}>
                 {SortedTask(taskInfo, updateList)}
             </ul>

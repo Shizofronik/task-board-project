@@ -3,7 +3,17 @@ import React from "react";
 function SideBar() {
     return(
         <div className="side-bar">
-            <h4 style={{marginLeft: "10px"}}>Тут будет какой то контент</h4>
+            <h3 style={{marginLeft: "20px"}}>Входящие</h3>
+            <div className="side-bar-section">
+                <h5 style={{marginLeft: "20px"}}>Здесь будет side-bar</h5>
+            </div>
+            <div className="side-bar-section">
+                <h5 style={{marginLeft: "20px"}}>И здесь</h5>
+            </div>
+            <div className="side-bar-section">
+                <h5 style={{marginLeft: "20px"}}>И тут тоже</h5>
+            </div>
+
         </div>
     )
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import HeadBar from './headBar'
 import InboxList from './taskLists';
-import CreateTask from './createTask';
 import InizializateTasks, {AddTask} from '../scripts/taskManager';
 import SideBar from './sideBar';
 
@@ -37,8 +36,8 @@ function Main({ TakeUsername }) {
                 <SideBar/>
                 <InboxList taskInfo={taskInboxInfo} 
                     taskCompletedInfo={taskCompletedInfo} 
-                    updateList={updateLists}/>
-                <CreateTask TakeProperties={addTask} />
+                    updateList={updateLists}
+                    TakeProperties={addTask}/>
             </div>
         </div>
     )
