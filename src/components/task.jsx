@@ -18,7 +18,6 @@ function Task(props) {
 
     }
 
-
     return (
         <div className={taskClass} id={props.task.id}>
             <input type="checkbox" onChange={addCompleted} checked={isComlpeted}></input>

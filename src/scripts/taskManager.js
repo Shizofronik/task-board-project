@@ -7,6 +7,14 @@ const InizializateTasks = async () => {
     return dataValues
 }
 
+const FindTask = async (id) => {
+    const response = await fetch(`http://localhost:3001/tasks/${id}`);
+    const dataValues = await response.json();
+    console.log(dataValues)
+
+    return dataValues
+}
+
 const AddTask = (id, titleValue, descriptionValue, isCompleted) => {
     fetch(`http://localhost:3001/tasks`,
     { method: 'POST', body: JSON.stringify({id: String(id), 
@@ -41,4 +49,4 @@ const ChangeStateTask = (state, id) => {
 }
 
 export default InizializateTasks
-export {AddTask, ChangeStateTask}
+export {AddTask, ChangeStateTask, FindTask}

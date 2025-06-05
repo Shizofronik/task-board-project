@@ -8,18 +8,27 @@ InizializateTasks().then((data) => maxId = parseInt(data[data.length - 1].id) + 
 
 function CreateTask({ TakeProperties }) {
     const [titleValue, setTitleValue] = useState('')
-    const [descriptionValue] = useState('')
+    const [descriptionValue, setDescriptionValue] = useState('')
     const [id, setId] = useState(maxId)
     const [isCompleted] = useState("false")
+    const [visibleDescription, setVisibleDescription] = useState(false)
 
     const getProperties = (event) => {
         event.preventDefault() 
-        TakeProperties(id, titleValue, descriptionValue, isCompleted)
-        setId(id + 1)
+        if(titleValue !== '') {
+            console.log(titleValue)
+            TakeProperties(id, titleValue, descriptionValue, isCompleted)
+            setId(id + 1)
+        }
+
     }
 
     return (
-        <form class="create-form"onSubmit={event => getProperties(event)}>
+        <form className="create-form" onSubmit={event => {getProperties(event); 
+                                                      setVisibleDescription(false);
+                                                      //Сделать очищение полей
+                                                    }}
+                                  onFocus={() => setVisibleDescription(true)}>
             <button style={{height: 30, borderRadius: '50%', marginRight: 10, marginTop: '5px'}}
                     type="submit">
                         +
@@ -29,6 +38,15 @@ function CreateTask({ TakeProperties }) {
                     id="create-task"
                     onChange={event => setTitleValue(event.target.value)}>
             </input>
+            {visibleDescription === true 
+                ? <input style={{width: '85%', marginLeft: '40px'}} 
+                    placeholder="Добавить описание" 
+                    id="create-task"
+                    onChange={event => {setDescriptionValue(event.target.value)}}>
+                  </input>
+                : null
+            }
+
         </form>
 
     )
