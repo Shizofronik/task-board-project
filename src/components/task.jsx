@@ -6,14 +6,15 @@ function Task(props) {
     const [isComlpeted, setIsCompleted] = useState(Boolean(props.task.completed === "true"))
 
     const addCompleted = () => {
-        setTaskClass(ChangeStateTask(isComlpeted, props.task.id))
+        const thisTaskId = props.task.id
+        setTaskClass(ChangeStateTask(isComlpeted, thisTaskId))
         setIsCompleted(!isComlpeted)
 
-        if (document.getElementById(`${props.task.id}`).parentElement.id === 'inbox-tasks') {
-            document.getElementById('completed-tasks').appendChild(document.getElementById(`${props.task.id}`))
+        if (document.getElementById(`${thisTaskId}`).parentElement.id === 'inbox-tasks') {
+            document.getElementById('completed-tasks').appendChild(document.getElementById(`${thisTaskId}`))
         }
         else {
-            document.getElementById('inbox-tasks').appendChild(document.getElementById(`${props.task.id}`))
+            document.getElementById('inbox-tasks').appendChild(document.getElementById(`${thisTaskId}`))
         }
 
     }

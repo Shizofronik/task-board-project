@@ -7,6 +7,7 @@ const InizializateTasks = async () => {
     return dataValues
 }
 
+//Найти таск по id
 const FindTask = async (id) => {
     const response = await fetch(`http://localhost:3001/tasks/${id}`);
     const dataValues = await response.json();
@@ -15,6 +16,7 @@ const FindTask = async (id) => {
     return dataValues
 }
 
+//Добавить таск в бд
 const AddTask = (id, titleValue, descriptionValue, isCompleted) => {
     fetch(`http://localhost:3001/tasks`,
     { method: 'POST', body: JSON.stringify({id: String(id), 
