@@ -27,7 +27,7 @@ function CreateTask({ TakeProperties }) {
         <form className="create-form" onSubmit={event => {getProperties(event); 
                                                       setVisibleDescription(false);
                                                       document.getElementById('create-task-title').value = ''
-                                                      document.getElementById('create-task-description').value = ''
+                                                      setDescriptionValue('')
                                                     }}
                                   onFocus={() => setVisibleDescription(true)}>
             <button style={{height: 30, borderRadius: '50%', marginRight: 10, marginTop: '5px'}}
