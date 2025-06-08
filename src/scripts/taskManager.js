@@ -11,18 +11,24 @@ const InizializateTasks = async () => {
 const FindTask = async (id) => {
     const response = await fetch(`http://localhost:3001/tasks/${id}`);
     const dataValues = await response.json();
-    console.log(dataValues)
 
     return dataValues
 }
 
-//Добавить таск в бд
 const AddTask = (id, titleValue, descriptionValue, isCompleted) => {
     fetch(`http://localhost:3001/tasks`,
     { method: 'POST', body: JSON.stringify({id: String(id), 
                                             title: titleValue, 
                                             description: descriptionValue, 
                                             completed: isCompleted }) })
+}
+
+const ChangeTask = (title, description, id) => {
+    fetch(`http://localhost:3001/tasks/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({title: title, description: description}),
+    })
+
 }
 
 //Смена состояний таска(активен/выполнен)
@@ -51,4 +57,4 @@ const ChangeStateTask = (state, id) => {
 }
 
 export default InizializateTasks
-export {AddTask, ChangeStateTask, FindTask}
+export {AddTask, ChangeStateTask, FindTask, ChangeTask}

@@ -31,6 +31,7 @@ html {
   --fgColor-default: #f0f6fc;
   --bodyColor-default: #f5f7fa;
   --taskCardColor-default: #323a49;
+  --taskCardColor-hover: #23478a;
   --greenAccent: #238636;
 
 }
@@ -177,12 +178,17 @@ textarea {
   display: flex;
   background: var(--taskCardColor-default);
   color: var(--fgColor-default);
-  cursor: grab;
-  border-bottom: 1px solid #4a6fa5;;
+  border-bottom: 1px solid #4a6fa5;
   width: 100%;
   height: 40px;
   overflow: hidden;
   align-items: center;
+}
+
+.task-card:hover {
+  border: 2px solid #4a6fa5;
+  border-top: 1px solid #4a6fa5 !important;
+  background-color: var(--taskCardColor-hover);
 }
 
 .task-card h4 {
@@ -238,4 +244,27 @@ textarea {
   height: 100vh;
   color: var(--fgColor-default);
   text-align: start;
+}
+
+.about-task-title {
+  min-width: 90%;
+  background-color: var(--bgColor-default);
+  border: none !important;;
+  resize: none;
+  align-content: center;
+  padding: 10px;
+  margin: 5px;
+  color: var(--fgColor-default);
+  cursor: text;
+}
+
+.about-task-description {
+  width: 90%;
+  min-height: 75%;
+  background-color: var(--bgColor-default);
+  border: none !important;;
+  resize: none;
+  margin: 5px;
+  color: var(--fgColor-default);
+  cursor: text;
 }

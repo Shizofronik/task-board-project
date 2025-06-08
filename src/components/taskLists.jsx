@@ -19,7 +19,7 @@ function InboxList({taskInfo, updateList, taskCompletedInfo, TakeProperties, ...
             <CreateTask TakeProperties={TakeProperties}/>
             <ul id="inbox-tasks" style={{padding: 0}}>
                 {SortedTask(taskInfo, updateList)}
-                <ComplitedList taskInfo={taskCompletedInfo} updateList={taskInfo}/>
+                <ComplitedList taskInfo={taskCompletedInfo} updateList={updateList}/>
             </ul>
         </div>
     )

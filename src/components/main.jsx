@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import HeadBar from './headBar'
 import InboxList from './taskLists';
 import InizializateTasks, {AddTask, FindTask} from '../scripts/taskManager';
@@ -13,6 +13,7 @@ function Main({ TakeUsername }) {
     const [taskInboxInfo, setTaskInboxInfo] = useState([...taskList.filter(task => task.completed === "false")])
     const [taskCompletedInfo, setTaskCompletedInfo] = useState([...taskList.filter(task => task.completed === "true")])
     const [aboutTaskInfo, setAboutTaskInfo] = useState({id: null, title: '', description: ''})
+    useEffect(() => updateLists(), [taskInboxInfo])
     
 
     const addTask = (id, titleValue, descriptionValue, isCompleted) => {
@@ -46,7 +47,7 @@ function Main({ TakeUsername }) {
                     taskCompletedInfo={taskCompletedInfo} 
                     updateList={updateLists}
                     TakeProperties={addTask}/>
-                <AboutTask aboutTaskInfo={aboutTaskInfo}/>
+                <AboutTask aboutTaskInfo={aboutTaskInfo} update={updateLists}/>
             </div>
         </div>
     )
