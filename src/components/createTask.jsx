@@ -26,7 +26,8 @@ function CreateTask({ TakeProperties }) {
     return (
         <form className="create-form" onSubmit={event => {getProperties(event); 
                                                       setVisibleDescription(false);
-                                                      //Сделать очищение полей
+                                                      document.getElementById('create-task-title').value = ''
+                                                      document.getElementById('create-task-description').value = ''
                                                     }}
                                   onFocus={() => setVisibleDescription(true)}>
             <button style={{height: 30, borderRadius: '50%', marginRight: 10, marginTop: '5px'}}
@@ -35,13 +36,13 @@ function CreateTask({ TakeProperties }) {
             </button>
             <input style={{width: '85%', marginTop: '5px'}} 
                     placeholder="Создать задачу" 
-                    id="create-task"
+                    id="create-task-title"
                     onChange={event => setTitleValue(event.target.value)}>
             </input>
             {visibleDescription === true 
                 ? <input style={{width: '85%', marginLeft: '40px'}} 
                     placeholder="Добавить описание" 
-                    id="create-task"
+                    id="create-task-description"
                     onChange={event => {setDescriptionValue(event.target.value)}}>
                   </input>
                 : null
