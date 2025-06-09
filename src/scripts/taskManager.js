@@ -15,6 +15,10 @@ const FindTask = async (id) => {
     return dataValues
 }
 
+const DeleteTask = (id) => {
+    fetch(`http://localhost:3001/tasks/${id}`, {method: 'DELETE'})
+}
+
 const AddTask = (id, titleValue, descriptionValue, isCompleted) => {
     fetch(`http://localhost:3001/tasks`,
     { method: 'POST', body: JSON.stringify({id: String(id), 
@@ -57,4 +61,4 @@ const ChangeStateTask = (state, id) => {
 }
 
 export default InizializateTasks
-export {AddTask, ChangeStateTask, FindTask, ChangeTask}
+export {AddTask, ChangeStateTask, FindTask, ChangeTask, DeleteTask}

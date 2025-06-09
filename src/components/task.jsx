@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ChangeStateTask } from "../scripts/taskManager";
+import DeleteCross from "./meatballMenu";
 
 function Task(props) {
     const {update} = props
@@ -17,6 +18,7 @@ function Task(props) {
         <div className={taskClass} id={props.task.id}>
             <input type="checkbox" onChange={addCompleted} checked={isComlpeted}></input>
             <h4>{props.task.title}</h4>
+            <DeleteCross parentElement={props.task} update={update}/>
         </div>
     )
 }
