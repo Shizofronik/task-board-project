@@ -19,18 +19,19 @@ const DeleteTask = (id) => {
     fetch(`http://localhost:3001/tasks/${id}`, {method: 'DELETE'})
 }
 
-const AddTask = (id, titleValue, descriptionValue, isCompleted) => {
+const AddTask = (id, titleValue, descriptionValue, time, isCompleted) => {
     fetch(`http://localhost:3001/tasks`,
     { method: 'POST', body: JSON.stringify({id: String(id), 
                                             title: titleValue, 
                                             description: descriptionValue, 
+                                            time: time,
                                             completed: isCompleted }) })
 }
 
-const ChangeTask = (title, description, id) => {
+const ChangeTask = (title, description, id, time) => {
     fetch(`http://localhost:3001/tasks/${id}`, {
         method: 'PATCH',
-        body: JSON.stringify({title: title, description: description}),
+        body: JSON.stringify({title: title, description: description, time: time}),
     })
 
 }

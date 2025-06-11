@@ -10,14 +10,15 @@ function CreateTask({ TakeProperties }) {
     const [titleValue, setTitleValue] = useState('')
     const [descriptionValue, setDescriptionValue] = useState('')
     const [id, setId] = useState(maxId)
-    const [isCompleted] = useState("false")
+    const [time] = useState('00:00')
     const [visibleDescription, setVisibleDescription] = useState(false)
+    const [isCompleted] = useState("false")
 
     const getProperties = (event) => {
         event.preventDefault() 
         if(titleValue !== '') {
             console.log(titleValue)
-            TakeProperties(id, titleValue, descriptionValue, isCompleted)
+            TakeProperties(id, titleValue, descriptionValue, time, isCompleted)
             setId(id + 1)
         }
 

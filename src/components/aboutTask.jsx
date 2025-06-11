@@ -2,21 +2,28 @@ import React, {useState, useEffect} from 'react';
 import { ChangeTask } from '../scripts/taskManager'
 
 function AboutTask(props) {
-    const {title, description, id} = props.aboutTaskInfo
+    const {title, description, id, time} = props.aboutTaskInfo
     const [aboutTaskTitle, setAboutTaskTitle] = useState(title)
     const [aboutTaskDescription, setAboutTaskDescription] = useState(description)
-    useEffect(() => {setAboutTaskTitle(title); setAboutTaskDescription(description)}, [title, description])
+    const [timeTask, setTimeTask] = useState(time)
+    useEffect(() => {setAboutTaskTitle(title); setAboutTaskDescription(description); setTimeTask(time)}, [title, description, time])
     //eslint-disable-next-line
     useEffect(() => props.update(), [aboutTaskTitle])
 
     const onChangeTitle = (event) => {
         setAboutTaskTitle(event.target.value); 
-        ChangeTask(event.target.value, aboutTaskDescription, id) 
+        ChangeTask(event.target.value, aboutTaskDescription, id, timeTask) 
     }
 
     const onChangeDescription = (event) => {
         setAboutTaskDescription(event.target.value); 
-        ChangeTask(aboutTaskTitle, event.target.value, id) 
+        ChangeTask(aboutTaskTitle, event.target.value, id, timeTask) 
+    }
+
+    const onChangeTime = (event) => {
+        setTimeTask(event.target.value); 
+        console.log(event.target.value)
+        ChangeTask(aboutTaskTitle, aboutTaskDescription, id, event.target.value) 
     }
     
     return(
@@ -26,7 +33,8 @@ function AboutTask(props) {
             <textarea  className='about-task-description' value={aboutTaskDescription}
                         placeholder='Добавьте описание...'
                         onChange={event => {onChangeDescription(event)}}></textarea >
-            <input type='time' id='about-task-input-time' className='input-time'></input>
+            <input type='time' id='about-task-input-time' className='input-time' 
+                        value={timeTask} onChange={event => onChangeTime(event)}></input>
         </div>
     )
 }

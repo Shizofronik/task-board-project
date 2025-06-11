@@ -12,16 +12,17 @@ function Main({ TakeUsername }) {
     const [userName] = useState(TakeUsername)
     const [taskInboxInfo, setTaskInboxInfo] = useState([...taskList.filter(task => task.completed === "false")])
     const [taskCompletedInfo, setTaskCompletedInfo] = useState([...taskList.filter(task => task.completed === "true")])
-    const [aboutTaskInfo, setAboutTaskInfo] = useState({id: null, title: '', description: ''})
+    const [aboutTaskInfo, setAboutTaskInfo] = useState({id: null, title: '', description: '', time: '00:00'})
     useEffect(() => updateLists(), [taskInboxInfo])
     
 
-    const addTask = (id, titleValue, descriptionValue, isCompleted) => {
+    const addTask = (id, titleValue, descriptionValue, time, isCompleted) => {
         setTaskInboxInfo([...taskInboxInfo, { id: id, 
                                     title: titleValue, 
-                                    description: descriptionValue, 
+                                    description: descriptionValue,
+                                    time: time, 
                                     completed: isCompleted }])
-        AddTask(id, titleValue, descriptionValue, isCompleted)
+        AddTask(id, titleValue, descriptionValue, time, isCompleted)
 
     }
 
