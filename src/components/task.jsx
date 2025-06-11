@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ChangeStateTask } from "../scripts/taskManager";
-import DeleteCross from "./meatballMenu";
+import DeleteCross from "./deleteCross";
 
 function Task(props) {
     const {update} = props

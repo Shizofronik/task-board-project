@@ -23,24 +23,25 @@ function CreateTask({ TakeProperties }) {
 
     }
 
+    const OnSubmit = (event) => {
+        getProperties(event); 
+        setVisibleDescription(false);
+        document.getElementById('create-task-title').value = ''
+        setDescriptionValue('')
+    }
+
     return (
-        <form className="create-form" onSubmit={event => {getProperties(event); 
-                                                      setVisibleDescription(false);
-                                                      document.getElementById('create-task-title').value = ''
-                                                      setDescriptionValue('')
-                                                    }}
-                                  onFocus={() => setVisibleDescription(true)}>
-            <button style={{height: 30, borderRadius: '50%', marginRight: 10, marginTop: '5px'}}
-                    type="submit">
-                        +
-            </button>
-            <input style={{width: '85%', marginTop: '5px'}} 
+        <form className="create-form" style={{padding: 0, margin: '2%'}} 
+                                    onSubmit={event => OnSubmit(event)}
+                                    onFocus={() => setVisibleDescription(true)}>
+            <button style={{display: 'none'}} type="submit"></button>
+            <input style={{width: '100%'}} 
                     placeholder="Создать задачу" 
                     id="create-task-title"
                     onChange={event => setTitleValue(event.target.value)}>
             </input>
             {visibleDescription === true 
-                ? <input style={{width: '85%', marginLeft: '40px'}} 
+                ? <input style={{width: '100%'}} 
                     placeholder="Добавить описание" 
                     id="create-task-description"
                     onChange={event => {setDescriptionValue(event.target.value)}}>

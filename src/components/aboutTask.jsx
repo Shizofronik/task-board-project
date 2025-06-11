@@ -24,7 +24,9 @@ function AboutTask(props) {
             <textarea  className='about-task-title' value={aboutTaskTitle} 
                         onChange={event => {onChangeTitle(event)}}></textarea >
             <textarea  className='about-task-description' value={aboutTaskDescription}
+                        placeholder='Добавьте описание...'
                         onChange={event => {onChangeDescription(event)}}></textarea >
+            <input type='time' id='about-task-input-time' className='input-time'></input>
         </div>
     )
 }
