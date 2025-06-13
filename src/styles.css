@@ -306,13 +306,23 @@ textarea {
   color: var(--fgColor-default);
   border: 2px solid var(--bgColor-default) !important;
   margin: 10px;
-  bottom: -30%;
+  bottom: -38%;
   padding: 2px;
 }
 
 .input-time:hover {
   border: 2px solid var(--taskCardColor-hover) !important;
   transition: 0.5s;
+}
+
+.color-menu {
+  position: relative;
+  background-color: var(--bgColor-default);
+  color: var(--fgColor-default);
+  border: 2px solid var(--bgColor-default) !important;
+  margin: 10px;
+  bottom: -38%;
+  padding: 2px;
 }
 
 ::-webkit-calendar-picker-indicator { 

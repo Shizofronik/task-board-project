@@ -35,6 +35,12 @@ function AboutTask(props) {
                         onChange={event => {onChangeDescription(event)}}></textarea >
             <input type='time' id='about-task-input-time' className='input-time' 
                         value={timeTask} onChange={event => onChangeTime(event)}></input>
+            <select className='color-menu'>
+                <option value="iphone 6s">red</option>
+                <option value="lumia 950">blue</option>
+                <option value="nexus 5x">yellow</option>
+                <option value="galaxy s7">green</option>
+            </select>
         </div>
     )
 }
