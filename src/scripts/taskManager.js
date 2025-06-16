@@ -58,7 +58,6 @@ const ChangeStateTask = (state, id) => {
 
         return completedClass
     }
-
 }
 
 export default InizializateTasks

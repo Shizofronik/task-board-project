@@ -4,8 +4,7 @@ import { DeleteTask } from '../scripts/taskManager';
 function DeleteCross({parentElement, update}) {
 
     const Delete = () => {
-        DeleteTask(parentElement.id)
-        update()
+        DeleteTask(parentElement.id)    
     }
 
     return(

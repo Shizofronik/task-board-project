@@ -2,11 +2,11 @@ import React from 'react';
 import Task from './task'
 import CreateTask from './createTask';
 
-function SortedTask(taskInfo, updateList) {
+function SortedTask(taskInfo) {
 
     return(
         [...taskInfo].map(task => 
-            <Task task={task} key={task.id} update={updateList}/>
+            <Task task={task} key={task.id}/>
         )
     )
 }
@@ -18,20 +18,20 @@ function InboxList({taskInfo, updateList, taskCompletedInfo, TakeProperties, ...
         <div className="task-list" id='inbox-list'>
             <CreateTask TakeProperties={TakeProperties}/>
             <ul id="inbox-tasks" style={{padding: 0}}>
-                {SortedTask(taskInfo, updateList)}
-                <ComplitedList taskInfo={taskCompletedInfo} updateList={updateList}/>
+                {SortedTask(taskInfo)}
+                <ComplitedList taskInfo={taskCompletedInfo}/>
             </ul>
         </div>
     )
 }
 
-function ComplitedList({taskInfo, updateList, ...props}) {
+function ComplitedList({taskInfo, ...props}) {
 
     return (
         <div className="task-list-completed" id='completed-list'>
             <h5 style={{float: 'left', marginLeft: 10}}>Выполнено</h5>
             <ul id="completed-tasks" style={{padding: 0}}>
-                {SortedTask(taskInfo, updateList)}
+                {SortedTask(taskInfo)}
             </ul>
         </div>
     )

@@ -7,8 +7,6 @@ function AboutTask(props) {
     const [aboutTaskDescription, setAboutTaskDescription] = useState(description)
     const [timeTask, setTimeTask] = useState(time)
     useEffect(() => {setAboutTaskTitle(title); setAboutTaskDescription(description); setTimeTask(time)}, [title, description, time])
-    //eslint-disable-next-line
-    useEffect(() => props.update(), [aboutTaskTitle])
 
     const onChangeTitle = (event) => {
         setAboutTaskTitle(event.target.value); 
