@@ -3,6 +3,7 @@ import { ChangeTask } from '../scripts/taskManager'
 
 function AboutTask(props) {
     const {title, description, id, time} = props.aboutTaskInfo
+    const {update} = props
     const [aboutTaskTitle, setAboutTaskTitle] = useState(title)
     const [aboutTaskDescription, setAboutTaskDescription] = useState(description)
     const [timeTask, setTimeTask] = useState(time)
@@ -11,17 +12,20 @@ function AboutTask(props) {
     const onChangeTitle = (event) => {
         setAboutTaskTitle(event.target.value); 
         ChangeTask(event.target.value, aboutTaskDescription, id, timeTask) 
+        update()
     }
 
     const onChangeDescription = (event) => {
         setAboutTaskDescription(event.target.value); 
         ChangeTask(aboutTaskTitle, event.target.value, id, timeTask) 
+        update()
     }
 
     const onChangeTime = (event) => {
         setTimeTask(event.target.value); 
         console.log(event.target.value)
-        ChangeTask(aboutTaskTitle, aboutTaskDescription, id, event.target.value) 
+        ChangeTask(aboutTaskTitle, aboutTaskDescription, id, event.target.value)
+        update() 
     }
     
     return(
