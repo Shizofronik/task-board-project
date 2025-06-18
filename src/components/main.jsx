@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import HeadBar from './headBar'
 import InboxList from './taskLists';
 import InizializateTasks, {AddTask, FindTask} from '../scripts/taskManager';
@@ -25,18 +25,18 @@ function Main({ TakeUsername }) {
 
     }
 
-    const updateLists = () => {
+    const updateLists = useCallback(() => {
         InizializateTasks().then((data) =>  {
             setTaskInboxInfo([...data].filter(task => task.completed === "false"))
             setTaskCompletedInfo([...data].filter(task => task.completed === "true"))
         })      
-    }
+    }, [])
 
-    const targetTask = (event) => {
+    const targetTask = useCallback((event) => {
         if(event.target.classList.contains('task-card')) {
-            FindTask(event.target.id).then((data) => setAboutTaskInfo(data))
+            FindTask((event.target.id).split('-')[1]).then((data) => setAboutTaskInfo(data))
         }
-    }
+    }, [])
 
     return (
         <div className='main-container'>

@@ -1,5 +1,3 @@
-//import logo from './logo.svg';
-import './App.css';
 import './styles.css';
 import './headBar.css';
 import LoginForm from './components/loginForm'
