@@ -3,28 +3,27 @@ import './headBar.css';
 import LoginForm from './components/loginForm'
 import Main from './components/main'
 import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 //import singInValidation from './dataService'
 
 
 function App() {
-  const [isLoggIn, setLoggIn] = useState(false)
   const [userName, setUserName] = useState('')
 
-  const handleLogin = (isValid, loginValue) => {
-    setLoggIn(isValid);
+  const handleLogin = (loginValue) => {
     setUserName(loginValue)
   } 
 
   return (
-    <main style={{height: "100vh"}}>
-      {isLoggIn === false
-        ? (<div style={{height: '100vh', alignContent: 'center'}}>
-            <LoginForm onLogin={handleLogin}/>
-          </div>) 
-        : (<Main TakeUsername={userName}/>)
-      }
-    </main>
+    <BrowserRouter>
+      <Routes>
 
+          <Route path='' element={<main style={{height: "100vh"}}>
+                                    <LoginForm onLogin={handleLogin} />
+                                  </main>} />
+          <Route path='main' element={<Main TakeUsername={userName} />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

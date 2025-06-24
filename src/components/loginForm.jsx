@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import singInValidation from '../scripts/dataService';
+import { replace, useNavigate } from 'react-router-dom';
 
 function LoginForm({ onLogin }) {
     const [isHiddenSingIn, setIsHiddenSingIn] = useState(false);
+    const navigate = useNavigate()
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        const isValid = singInValidation(document.querySelector('[data-login]').value, document.querySelector('[data-password]').value); // Получаем результат
+        event.preventDefault()
+        if(!singInValidation(document.querySelector('[data-login]').value, document.querySelector('[data-password]').value)) {
+            return
+        } // Прооверяем верность введенных данных
 
-        onLogin(isValid, document.querySelector('[data-login]').value); // Передаем результат в App.js через onLogin
+        onLogin(document.querySelector('[data-login]').value); // Передаем результат в App.js через onLogin
+        navigate('main', {replace: false})
+
     };
 
     const ToggleComponent = (event) => {
@@ -18,7 +24,7 @@ function LoginForm({ onLogin }) {
 
     return (
         <div>
-            <form id="singinForm" method="post" data-js-singin
+            <form id="singinForm" action='/main' data-js-singin 
                 onSubmit={handleSubmit} style={{ display: isHiddenSingIn ? 'none' : 'flex' }}>
                 <p className="field">
                     <label className="field__label" htmlFor="login">Username or email address</label>

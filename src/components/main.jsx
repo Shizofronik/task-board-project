@@ -6,7 +6,7 @@ import SideBar from './sideBar';
 import AboutTask from './aboutTask';
 
 let taskList 
-InizializateTasks().then((data) => taskList = data)
+await InizializateTasks().then((data) => {taskList = data})
 
 function Main({ TakeUsername }) {
     const [userName] = useState(TakeUsername)
@@ -15,6 +15,7 @@ function Main({ TakeUsername }) {
     const [aboutTaskInfo, setAboutTaskInfo] = useState({id: null})
     
 
+    //Обновление taskInboxInfo и запись в db
     const addTask = (id, titleValue, descriptionValue, time, isCompleted) => {
         setTaskInboxInfo([...taskInboxInfo, { id: id, 
                                     title: titleValue, 
@@ -25,6 +26,7 @@ function Main({ TakeUsername }) {
 
     }
 
+    //Для синхронного обновления заголовков aboutBlock и task
     const updateLists = useCallback(() => {
         InizializateTasks().then((data) =>  {
             setTaskInboxInfo([...data].filter(task => task.completed === "false"))
@@ -32,6 +34,7 @@ function Main({ TakeUsername }) {
         })      
     }, [])
 
+    //Передаем данные о задаче в фокусе
     const targetTask = useCallback((event) => {
         if(event.target.classList.contains('task-card')) {
             FindTask((event.target.id).split('-')[1]).then((data) => setAboutTaskInfo(data))
