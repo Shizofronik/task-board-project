@@ -96,6 +96,23 @@ input[type='checkbox']:checked {
   border: 2px solid gray;
 }
 
+input[type='checkbox']:checked::after {
+  width: 10px;
+  height: 10px;
+  display: block;
+  transition: 500ms;
+  margin-top: -7px;
+}
+
+input[type='checkbox']::after {
+  content: "\2714";
+  width: 0px;
+  height: 0px;
+  transition: 500ms;
+  display: none;
+}
+
+
 :is(
   input:not(.radios__control, .checkbox__control),
   button,
