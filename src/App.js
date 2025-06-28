@@ -15,15 +15,17 @@ function App() {
   } 
 
   return (
-    <BrowserRouter>
-      <Routes>
+    <main style={{height: "100vh"}}>
+      <BrowserRouter>
+        <Routes>
+            <Route path='' element={<div style={{height: '100vh', alignContent: 'center'}}>
+                                      <LoginForm onLogin={handleLogin} />
+                                    </div>} />
+            <Route path='main' element={<Main TakeUsername={userName} />} />
+        </Routes>
+      </BrowserRouter>
+    </main>
 
-          <Route path='' element={<main style={{height: "100vh"}}>
-                                    <LoginForm onLogin={handleLogin} />
-                                  </main>} />
-          <Route path='main' element={<Main TakeUsername={userName} />} />
-      </Routes>
-    </BrowserRouter>
   )
 }
 

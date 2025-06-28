@@ -13,7 +13,7 @@ function LoginForm({ onLogin }) {
         } // Прооверяем верность введенных данных
 
         onLogin(document.querySelector('[data-login]').value); // Передаем результат в App.js через onLogin
-        navigate('main', {replace: false})
+        navigate('main', {replace: false})//Для рендиринга этого компонента по url '/main'
 
     };
 
